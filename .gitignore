@@ -1,2 +1,6 @@
 .ipynb_checkpoints/
 __pycache__/
+PitchCorrectionApplication/JuceLibraryCode
+PitchCorrectionApplication/Builds
+PitchCorrectionPlugin/JuceLibraryCode
+PitchCorrectionPlugin/Builds

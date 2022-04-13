@@ -49,7 +49,7 @@ LPF(juce::dsp::IIR::Coefficients<float>::makeLowPass(44100, 20000.0f, 0.1f))
 
     addAndMakeVisible(&decaySlider);
     decaySlider.setRange(0, 1, 0.1);
-    decaySlider.setValue(1);
+    decaySlider.setValue(0.5);
     addAndMakeVisible(&decayLabel);
     decayLabel.setText("Decay", juce::dontSendNotification);
     decayLabel.attachToComponent(&decaySlider, true);

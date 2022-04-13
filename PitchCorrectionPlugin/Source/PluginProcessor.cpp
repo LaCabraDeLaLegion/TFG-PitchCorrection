@@ -22,6 +22,10 @@ PitchCorrectionPluginAudioProcessor::PitchCorrectionPluginAudioProcessor()
                        )
 #endif
 {
+    addParameter(decay_parameter = new juce::AudioParameterFloat("decay_parameter", "Decay", 0.0f, 1.0f, 0.5f));
+    addParameter(sensitivity_parameter = new juce::AudioParameterFloat("sensitivity_parameter", "Sensitivity", 0.0f, 0.4f, 0.2f));
+    addParameter(min_frequency_parameter = new juce::AudioParameterFloat("min_frequency_parameter", "Minimum Frequency", 50.0f, 2500.0f, 80.0f));
+    addParameter(max_frequency_parameter = new juce::AudioParameterFloat("max_frequency_parameter", "Maximum Frequency", 50.0f, 2500.4f, 800.0f));
 }
 
 PitchCorrectionPluginAudioProcessor::~PitchCorrectionPluginAudioProcessor()
@@ -94,7 +98,7 @@ void PitchCorrectionPluginAudioProcessor::changeProgramName (int index, const ju
 void PitchCorrectionPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
 
-    autotune = AutoTune(0.2, 80, 800, sampleRate);
+    autotune = AutoTune(0.2, 80, 800, sampleRate, 0.5);
 }
 
 void PitchCorrectionPluginAudioProcessor::releaseResources()
@@ -138,6 +142,8 @@ void PitchCorrectionPluginAudioProcessor::processBlock (juce::AudioBuffer<float>
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
+    autotune.set_parameters(sensitivity_parameter->get(), min_frequency_parameter->get(), max_frequency_parameter->get(), decay_parameter->get());
+
     double freq = 0;
     double Lmin = 0;
 
@@ -180,7 +186,8 @@ bool PitchCorrectionPluginAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* PitchCorrectionPluginAudioProcessor::createEditor()
 {
-    return new PitchCorrectionPluginAudioProcessorEditor (*this);
+    //return new PitchCorrectionPluginAudioProcessorEditor (*this);
+    return new juce::GenericAudioProcessorEditor(*this);
 }
 
 //==============================================================================

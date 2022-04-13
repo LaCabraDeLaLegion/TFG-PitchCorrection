@@ -56,7 +56,12 @@ public:
 
 private:
 
-    AutoTune autotune = AutoTune(0, 0.2, 50, 2500);
+    AutoTune autotune = AutoTune(0, 0.2, 50, 2500, 0.5);
+
+    juce::AudioParameterFloat* decay_parameter;
+    juce::AudioParameterFloat* sensitivity_parameter;
+    juce::AudioParameterFloat* min_frequency_parameter;
+    juce::AudioParameterFloat* max_frequency_parameter;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PitchCorrectionPluginAudioProcessor)

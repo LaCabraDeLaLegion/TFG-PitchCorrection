@@ -200,15 +200,6 @@ void MainComponent::correctPitchButtonClicked()
 
         left_data[index] = output_sample;
         //right_data[index] = output_sample;
-
-        if (index % 8 == 0) {
-            autotune.reset_resample_rate();
-        }
-
-        if (index == 763039) {
-            int hola = 0;
-        }
-
     }
 
     pitchCorrectionFeedback.setText("Pitch correction finished", juce::dontSendNotification);

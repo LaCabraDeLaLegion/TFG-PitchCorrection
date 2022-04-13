@@ -5,7 +5,7 @@ class AutoTune {
 
 public:
 
-	AutoTune(float eps, float min_freq, float max_freq, float sample_rate);
+	AutoTune(float eps, float min_freq, float max_freq, float sample_rate, float decay_value);
 	double get_fundamental_frequency();
 	void add_sample(float sample);
 	void add_decimated_sample();

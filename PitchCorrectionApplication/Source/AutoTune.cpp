@@ -2,7 +2,7 @@
 #include "JuceHeader.h"
 #include "spline.h"
 
-AutoTune::AutoTune(float eps, float min_freq, float max_freq, float sample_rate)
+AutoTune::AutoTune(float eps, float min_freq, float max_freq, float sample_rate, float decay_value)
 {
 	epsilon = eps;
 	min_L = sample_rate / (max_freq * 8);
@@ -17,7 +17,7 @@ AutoTune::AutoTune(float eps, float min_freq, float max_freq, float sample_rate)
 	resample_rate = 1;
 	input_addr = 10;
 	output_addr = 0;
-	decay = 0.5;
+	decay = decay;
 }
 
 double AutoTune::get_fundamental_frequency()

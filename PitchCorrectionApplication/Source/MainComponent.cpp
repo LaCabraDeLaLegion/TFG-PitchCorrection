@@ -177,7 +177,7 @@ void MainComponent::correctPitchButtonClicked()
         sample_rate = 44100;
     }
 
-    AutoTune autotune = AutoTune(sensitivitySlider.getValue(), minFrequencySlider.getValue(), maxFrequencySlider.getValue(), sample_rate);
+    AutoTune autotune = AutoTune(sensitivitySlider.getValue(), minFrequencySlider.getValue(), maxFrequencySlider.getValue(), sample_rate, decaySlider.getValue());
 
     for (int index = 0; index < output_audio_buffer.getNumSamples(); index++) {
 
@@ -212,7 +212,6 @@ void MainComponent::correctPitchButtonClicked()
     }
 
     pitchCorrectionFeedback.setText("Pitch correction finished", juce::dontSendNotification);
-
 }
 
 void MainComponent::saveResultsButtonClicked()

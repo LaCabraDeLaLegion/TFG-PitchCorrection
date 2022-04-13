@@ -171,10 +171,6 @@ void PitchCorrectionPluginAudioProcessor::processBlock (juce::AudioBuffer<float>
 
         left_data[i] = output_sample;
         right_data[i] = output_sample;
-
-        if (i % 8 == 0) {
-            autotune.reset_resample_rate();
-        }
     }
 }
 

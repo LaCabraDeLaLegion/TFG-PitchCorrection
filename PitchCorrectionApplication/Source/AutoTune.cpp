@@ -243,7 +243,7 @@ double AutoTune::get_desired_frequency(double real_freq)
 	}
 
 	if (argmin == -1)
-		return -1;
+		return real_freq;
 
 	return notes[argmin];
 }
